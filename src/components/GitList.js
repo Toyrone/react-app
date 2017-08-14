@@ -6,7 +6,7 @@ import GitItem from './GitItem';
 class GitList extends Component {
 
   componentDidMount() {
-    // console.log(this.props.items);
+    console.log(this.props.items);
     let dateFrom = (new Date()).toISOString().slice(0, 10);
 
     this.props.fetchData(`https://api.github.com/search/repositories?q=created:>=` + dateFrom + `&sort=stars&order=desc&per_page=10`)
@@ -33,9 +33,10 @@ class GitList extends Component {
     				</tr>
     			</thead>
     			<tbody>
-            { this.props.items.map((item) => (
-              <GitItem key={item.id} item={item} />
-            ))}
+            { this.props.items.map((item) => {
+              return <GitItem key={item.id} item={item} />
+            })
+            }
             <tr>
     					<td></td>
     				</tr>

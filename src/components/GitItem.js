@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 
+
 class GitItem extends Component {
 
   render() {
     return (
       <tr>
         <td>
-          <img src={this.prop.item.owner.avatar_url} alt={this.prop.item.full_name} width="25" height="25" />
+          <img src={this.props.item.owner.avatar_url} alt={this.props.item.full_name} width="25" height="25" />
         </td>
         <td>
-          {this.prop.item.full_name}
+          {this.props.item.full_name}
         </td>
         <td>
-          {this.prop.item.stargazers_count}
+          {this.props.item.stargazers_count}
         </td>
         <td>
-          {this.prop.item.language}
+          {this.props.item.language}
         </td>
        </tr>
     );

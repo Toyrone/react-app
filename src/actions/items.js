@@ -24,18 +24,34 @@ export function itemsFetchData(url) {
     dispatch(itemsIsLoading(true));
 
     fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
+    .then((blob) => {
+      return blob.json()
+    })
+    .then((response) => {
+      // if (!response.ok) {
+      //   throw Error(response.statusText);
+      // }
 
-        dispatch(itemsIsLoading(false));
+      dispatch(itemsIsLoading(false));
+      dispatch(itemsFetchDataSuccess(response.items));
 
-        return response;
-      })
-      // .then((response) => console.log(response));
-      .then((response) => response.json())
-      .then((items) => dispatch(itemsFetchDataSuccess(items)))
-      .catch(() => dispatch(itemsHasErrored(true)));
-  };
+      // console.log(response);
+    })
+
+  //   fetch(url)
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw Error(response.statusText);
+  //       }
+  //
+  //       dispatch(itemsIsLoading(false));
+  //
+  //       return response;
+  //     })
+  //     // .then((response) => console.log(response));
+  //     .then((response) => response.json())
+  //     .then((items) => dispatch(itemsFetchDataSuccess(items)))
+  //     .catch(() => dispatch(itemsHasErrored(true)));
+  // };
+}
 }
