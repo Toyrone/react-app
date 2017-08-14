@@ -33,9 +33,9 @@ export function itemsFetchData(url) {
 
         return response;
       })
-      .then((response) => console.log(response));
-      // .then((response) => response.json())
-      // .then((items) => dispatch(itemsFetchDataSuccess(items)))
-      // .catch(() => dispatch(itemsHasErrored(true)));
+      // .then((response) => console.log(response));
+      .then((response) => response.json())
+      .then((items) => dispatch(itemsFetchDataSuccess(items)))
+      .catch(() => dispatch(itemsHasErrored(true)));
   };
 }
